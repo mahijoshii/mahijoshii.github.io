@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mahi Joshi</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FDF8F4;--peach:#F2C4A8;--rose:#E8A5A0;--dusty:#D4897A;
+  --dark:#2E1F1A;--mid:#7A5548;--light:#FAF0EA;--accent:#C97B6E;
+  --soft:#F7E8E0;--softer:#FDF4F0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ── NAV (always fixed) ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 3rem;
+  background:rgba(253,248,244,0.95);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,123,110,0.15);
+}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--accent);text-decoration:none}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:0.78rem;font-weight:500;color:var(--mid);letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  padding:5.5rem 3rem 0;
+  align-items:center;
+  max-width:1100px;margin:0 auto;
+}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(201,123,110,0.1);border:1px solid rgba(201,123,110,0.25);padding:0.35rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5.5rem);line-height:1.0;color:var(--dark);margin-bottom:1.2rem}
+.hero-name em{color:var(--accent);font-style:italic}
+.hero-sub{font-size:1rem;font-weight:300;color:var(--mid);line-height:1.8;max-width:440px;margin-bottom:1.8rem}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.8rem}
+.hstat{background:var(--soft);border:1px solid rgba(201,123,110,0.15);border-radius:14px;padding:0.9rem;text-align:center}
+.hstat-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--accent)}
+.hstat-label{font-size:0.68rem;color:var(--mid);letter-spacing:0.06em;margin-top:0.2rem}
+.hero-cta{display:flex;gap:0.8rem}
+.btn{padding:0.8rem 1.8rem;border-radius:100px;font-size:0.88rem;font-weight:500;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;font-family:'DM Sans',sans-serif}
+.btn-primary{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.btn-primary:hover{background:var(--dusty);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(201,123,110,0.4)}
+.btn-ghost:hover{background:rgba(201,123,110,0.08);transform:translateY(-2px)}
+
+/* ── GAME PANEL ── */
+.hero-right{display:flex;flex-direction:column;align-items:center;gap:0.7rem;padding-left:2rem}
+.game-label{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+#game-wrapper{position:relative;width:100%;max-width:380px;background:#0F0A0A;border-radius:20px;border:1.5px solid rgba(201,123,110,0.3);overflow:hidden;box-shadow:0 20px 60px rgba(201,123,110,0.15)}
+canvas#gc{display:block;width:100%}
+#gov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(15,10,10,0.92);border-radius:20px;text-align:center;padding:2rem}
+#gov h3{font-family:'DM Serif Display',serif;font-size:1.6rem;color:#FAF0EA;margin-bottom:0.5rem}
+#gov p{color:rgba(250,240,234,0.6);font-size:0.85rem;margin-bottom:1.2rem;line-height:1.6}
+#gov-score{font-size:1rem;color:var(--peach);font-weight:500;margin-bottom:1.2rem;display:none}
+.game-hud{display:flex;justify-content:space-between;width:100%;max-width:380px;font-size:0.78rem;color:var(--mid)}
+.game-hud span{color:var(--accent);font-weight:500}
+
+/* ── IMPACT ── */
+.impact-section{background:var(--dark);padding:3rem 3rem}
+.impact-inner{max-width:1100px;margin:0 auto}
+.impact-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:1.5rem}
+.imp-card{text-align:center;padding:1.3rem 0.8rem;border:1px solid rgba(242,196,168,0.12);border-radius:16px;background:rgba(242,196,168,0.04);transition:border-color 0.3s,transform 0.3s}
+.imp-card:hover{border-color:rgba(242,196,168,0.35);transform:translateY(-3px)}
+.imp-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--peach);display:block}
+.imp-label{font-size:0.7rem;color:rgba(242,196,168,0.5);letter-spacing:0.06em;margin-top:0.3rem;line-height:1.4}
+.impact-title{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#FAF0EA}
+.impact-sub{font-size:0.82rem;color:rgba(250,240,234,0.4);margin-top:0.2rem}
+
+/* ── NEURAL NET ── */
+.nn-section{background:var(--dark);padding:0 3rem 3.5rem}
+.nn-inner{max-width:1100px;margin:0 auto}
+.nn-header{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2rem}
+.nn-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#FAF0EA;line-height:1.15}
+.nn-desc{font-size:0.88rem;color:rgba(250,240,234,0.5);line-height:1.8}
+.nn-desc strong{color:var(--peach);font-weight:500}
+#nn-canvas{display:block;width:100%;border-radius:16px;border:1px solid rgba(201,123,110,0.15);background:#0a0605;cursor:crosshair}
+.nn-hint{text-align:center;font-size:0.72rem;color:rgba(242,196,168,0.3);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.8rem}
+
+/* ── SHARED SECTION ── */
+.section{padding:3.5rem 3rem;max-width:1100px;margin:0 auto}
+.sec-label{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);line-height:1.15;margin-bottom:2rem;color:var(--dark)}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.skill-group-title{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.skill-bar{margin-bottom:1rem}
+.skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem}
+.skill-name{font-size:0.88rem;color:var(--dark)}
+.skill-pct{font-size:0.75rem;color:var(--accent);font-weight:500}
+.bar-track{height:4px;background:rgba(201,123,110,0.12);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--peach),var(--accent));border-radius:100px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+
+/* ── EXPERIENCE ── */
+.exp-section{background:var(--softer);border-radius:24px;max-width:1100px;margin:0 auto;padding:3.5rem 3rem}
+.exp-tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid rgba(201,123,110,0.15);overflow-x:auto}
+.exp-tab{padding:0.65rem 1.3rem;font-size:0.8rem;font-weight:500;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;flex-shrink:0}
+.exp-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.exp-tab:hover{color:var(--accent)}
+.exp-panel{display:none}
+.exp-panel.active{display:block}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.5rem}
+.exp-role{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--dark)}
+.exp-date-badge{font-size:0.72rem;font-weight:500;color:var(--accent);background:rgba(201,123,110,0.1);border:1px solid rgba(201,123,110,0.2);padding:0.25rem 0.75rem;border-radius:100px;white-space:nowrap}
+.exp-company{font-size:0.9rem;color:var(--accent);margin-bottom:1rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.exp-bullets li{font-size:0.88rem;line-height:1.7;color:var(--mid);padding-left:1.2rem;position:relative}
+.exp-bullets li::before{content:'✦';position:absolute;left:0;color:var(--peach);font-size:0.6rem;top:0.42rem}
+.exp-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem}
+.tag{font-size:0.7rem;padding:0.22rem 0.65rem;border-radius:100px;background:rgba(201,123,110,0.08);border:1px solid rgba(201,123,110,0.18);color:var(--accent)}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.proj-card{background:var(--soft);border:1px solid rgba(201,123,110,0.15);border-radius:20px;padding:1.6rem;cursor:pointer;transition:all 0.25s;text-decoration:none;display:block;color:inherit}
+.proj-card:hover{transform:translateY(-4px);border-color:rgba(201,123,110,0.35);box-shadow:0 14px 36px rgba(201,123,110,0.1)}
+.proj-icon{font-size:1.5rem;margin-bottom:0.8rem}
+.proj-name{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--dark);margin-bottom:0.4rem}
+.proj-desc{font-size:0.83rem;line-height:1.65;color:var(--mid)}
+.proj-metric{display:inline-block;margin-top:0.7rem;font-size:0.75rem;font-weight:500;color:var(--accent);background:rgba(201,123,110,0.1);border:1px solid rgba(201,123,110,0.2);padding:0.22rem 0.65rem;border-radius:100px}
+.proj-github{display:inline-flex;align-items:center;gap:0.35rem;margin-top:0.75rem;margin-left:0.4rem;font-size:0.72rem;font-weight:500;color:var(--mid);background:rgba(201,123,110,0.06);border:1px solid rgba(201,123,110,0.15);padding:0.22rem 0.65rem;border-radius:100px;transition:color 0.2s,border-color 0.2s,background 0.2s}
+a.proj-card:hover .proj-github{color:var(--accent);border-color:rgba(201,123,110,0.35);background:rgba(201,123,110,0.12)}
+
+/* ── CONTACT ── */
+.contact-section{padding:3rem 3rem 5rem;max-width:1100px;margin:0 auto}
+.contact-inner{background:var(--dark);border-radius:24px;padding:4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.contact-left .sec-title{color:#FAF0EA;margin-bottom:0.8rem}
+.contact-left p{color:rgba(250,240,234,0.5);font-size:0.92rem;line-height:1.8}
+.contact-right{display:flex;flex-direction:column;gap:0.9rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem;background:rgba(242,196,168,0.07);border:1px solid rgba(242,196,168,0.12);border-radius:14px;text-decoration:none;transition:all 0.2s;color:#FAF0EA}
+.contact-link:hover{background:rgba(242,196,168,0.13);border-color:rgba(242,196,168,0.25);transform:translateX(4px)}
+.cl-icon{width:34px;height:34px;border-radius:10px;background:rgba(201,123,110,0.2);display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
+.cl-label{font-size:0.72rem;color:rgba(250,240,234,0.4);letter-spacing:0.06em}
+.cl-val{font-size:0.88rem;font-weight:500}
+
+footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0.4)}
+
+/* ── ABOUT GRID ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.about-fact{background:var(--soft);border:1px solid rgba(201,123,110,0.15);border-radius:14px;padding:1rem 1.2rem}
+.about-fact-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.25rem}
+.about-fact-val{font-size:0.9rem;font-weight:500;color:var(--dark)}
+
+.hero-profile {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(201,123,110,0.3);
+  box-shadow: 0 8px 25px rgba(201,123,110,0.2);
+  margin-right: 1rem;
+}
+
+.hero-name-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* ── FLOATING ROBOT ── */
+:root{
+  --robot-pink:#F4A6E0;
+  --robot-purple:#B78DFF;
+  --robot-deep:#8E63E6;
+  --robot-shadow:rgba(183,141,255,0.28);
+}
+#robot-companion{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:1200;
+  width:96px;
+  height:120px;
+  pointer-events:none;
+}
+#robot-float{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  animation:robotBob 3.6s ease-in-out infinite;
+  transition:transform 0.35s ease;
+}
+#robot-float.attention{
+  animation:robotJump 0.9s ease 3;
+}
+#robot-body{
+  position:relative;
+  width:82px;
+  height:104px;
+  pointer-events:auto;
+  cursor:pointer;
+  user-select:none;
+}
+#robot-badge{
+  position:absolute;
+  top:-10px;
+  right:-2px;
+  min-width:28px;
+  height:28px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--robot-pink),#ffd6f6);
+  color:#6e2cb8;
+  font-size:0.78rem;
+  font-weight:700;
+  box-shadow:0 8px 18px rgba(244,166,224,0.35);
+  opacity:0;
+  transform:scale(0.75);
+  transition:all 0.28s ease;
+}
+#robot-badge.show{
+  opacity:1;
+  transform:scale(1);
+}
+.robot-shadow{
+  position:absolute;
+  left:50%;
+  bottom:2px;
+  transform:translateX(-50%);
+  width:54px;
+  height:12px;
+  border-radius:50%;
+  background:var(--robot-shadow);
+  filter:blur(6px);
+}
+.robot-head{
+  position:absolute;
+  top:2px;
+  left:50%;
+  transform:translateX(-50%);
+  width:58px;
+  height:44px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#ffd6fb,var(--robot-pink));
+  border:2px solid rgba(142,99,230,0.3);
+  box-shadow:0 10px 24px rgba(183,141,255,0.20);
+}
+.robot-head::before,
+.robot-head::after{
+  content:"";
+  position:absolute;
+  top:-10px;
+  width:5px;
+  height:13px;
+  border-radius:999px;
+  background:linear-gradient(180deg,var(--robot-purple),#ffd1f6);
+}
+.robot-head::before{left:15px; transform:rotate(-12deg);}
+.robot-head::after{right:15px; transform:rotate(12deg);}
+.robot-head .tip{
+  position:absolute;
+  top:-16px;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--robot-purple),#ffc1f0);
+  box-shadow:0 0 0 3px rgba(255,255,255,0.35);
+}
+.robot-head .tip.left{left:10px;}
+.robot-head .tip.right{right:10px;}
+.robot-face{
+  position:absolute;
+  inset:0;
+}
+.robot-eye{
+  position:absolute;
+  top:16px;
+  width:10px;
+  height:14px;
+  border-radius:999px;
+  background:#6f47d6;
+  box-shadow:0 0 10px rgba(111,71,214,0.22);
+  transition:transform 0.2s ease, height 0.2s ease;
+}
+.robot-eye.left{left:15px;}
+.robot-eye.right{right:15px;}
+.robot-cheek{
+  position:absolute;
+  top:27px;
+  width:10px;
+  height:6px;
+  border-radius:999px;
+  background:rgba(255,150,210,0.55);
+}
+.robot-cheek.left{left:10px;}
+.robot-cheek.right{right:10px;}
+.robot-mouth{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:16px;
+  height:8px;
+  transform:translateX(-50%);
+  border-bottom:3px solid #7b4bdf;
+  border-radius:0 0 14px 14px;
+}
+.robot-highlight{
+  position:absolute;
+  top:7px;
+  left:9px;
+  width:18px;
+  height:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.42);
+  transform:rotate(-12deg);
+}
+.robot-ear{
+  position:absolute;
+  top:14px;
+  width:8px;
+  height:17px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#f8c5f0,#bf94ff);
+  box-shadow:0 3px 8px rgba(183,141,255,0.16);
+}
+.robot-ear.left{left:-5px;}
+.robot-ear.right{right:-5px;}
+.robot-eye::after{
+  content:"";
+  position:absolute;
+  top:2px;
+  left:2px;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.7);
+}
+.robot-hand{
+  position:absolute;
+  bottom:-2px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#cda6ff;
+}
+.robot-hand.left{left:0;}
+.robot-hand.right{right:0;}
+.robot-torso{
+  position:absolute;
+  top:41px;
+  left:50%;
+  transform:translateX(-50%);
+  width:64px;
+  height:42px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#fff6fe,#eed9ff);
+  border:2px solid rgba(142,99,230,0.18);
+  box-shadow:0 10px 24px rgba(183,141,255,0.18);
+}
+.robot-heart{
+  position:absolute;
+  left:50%;
+  top:11px;
+  transform:translateX(-50%);
+  font-size:0.95rem;
+  filter:drop-shadow(0 2px 4px rgba(183,141,255,0.22));
+}
+.robot-arm{
+  position:absolute;
+  top:49px;
+  width:14px;
+  height:30px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#f8c5f0,#cda6ff);
+  transform-origin:top center;
+}
+.robot-arm.left{left:4px; transform:rotate(22deg);}
+.robot-arm.right{right:4px; transform:rotate(-22deg);}
+#robot-float.wave .robot-arm.right{
+  animation:robotWave 0.8s ease-in-out 3;
+}
+.robot-leg{
+  position:absolute;
+  bottom:6px;
+  width:12px;
+  height:27px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#d9b5ff,#a97eff);
+}
+.robot-leg.left{left:24px;}
+.robot-leg.right{right:24px;}
+.robot-foot{
+  position:absolute;
+  bottom:0;
+  width:18px;
+  height:8px;
+  border-radius:999px;
+  background:#9c72ee;
+}
+.robot-foot.left{left:21px;}
+.robot-foot.right{right:21px;}
+
+#robot-bubble{
+  position:absolute;
+  right:100px;
+  bottom:46px;
+  width:min(300px, calc(100vw - 150px));
+  background:rgba(255,250,255,0.98);
+  color:var(--dark);
+  border:1px solid rgba(183,141,255,0.25);
+  border-radius:18px;
+  box-shadow:0 20px 38px rgba(144,108,220,0.18);
+  padding:0.95rem 1rem;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(10px) scale(0.96);
+  transition:all 0.28s ease;
+}
+#robot-bubble.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+#robot-bubble::after{
+  content:"";
+  position:absolute;
+  right:-8px;
+  bottom:22px;
+  width:16px;
+  height:16px;
+  background:rgba(255,250,255,0.98);
+  border-right:1px solid rgba(183,141,255,0.25);
+  border-bottom:1px solid rgba(183,141,255,0.25);
+  transform:rotate(-45deg);
+}
+.robot-bubble-label{
+  font-size:0.66rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#9a6fe6;
+  margin-bottom:0.3rem;
+  font-weight:700;
+}
+.robot-bubble-text{
+  font-size:0.84rem;
+  line-height:1.6;
+  color:#61485e;
+}
+.robot-bubble-hint{
+  margin-top:0.5rem;
+  font-size:0.72rem;
+  color:#a07bbd;
+}
+@keyframes robotBob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+@keyframes robotJump{
+  0%,100%{transform:translateY(0)}
+  20%{transform:translateY(-4px)}
+  45%{transform:translateY(-18px)}
+  65%{transform:translateY(0)}
+  80%{transform:translateY(-7px)}
+}
+@keyframes robotWave{
+  0%,100%{transform:rotate(-22deg)}
+  50%{transform:rotate(-52deg)}
+}
+@media (max-width: 768px){
+  #robot-companion{
+    right:14px;
+    bottom:14px;
+    transform:scale(0.9);
+    transform-origin:bottom right;
+  }
+  #robot-bubble{
+    width:min(250px, calc(100vw - 115px));
+    right:86px;
+    bottom:42px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── FIXED NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">mahi joshi</a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><div class="dot"></div>open to fall 2026, winter & summer 2027 roles</div>
+    <div class="hero-name-row">
+    <img src="profile.JPG" alt="Mahi Joshi" class="hero-profile"/>
+    <h1 class="hero-name">Mahi<br/><em>Joshi.</em></h1>
+  </div>
+    <p class="hero-sub">Computer Engineering + AI at U of Waterloo. I build things that are fast, smart, and actually shipped — from Agentic AI, full stack apps, to ML for the International Space Station Canadarm in 24 hours.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">internships</div></div>
+      <div class="hstat"><div class="hstat-num">$120K</div><div class="hstat-label">Schulich Scholar</div></div>
+      <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-label">engineers led</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View my work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="game-label">✦ play while you browse</div>
+    <div id="game-wrapper">
+      <canvas id="gc" width="380" height="420"></canvas>
+      <div id="gov">
+        <h3>🚀 Space Shooter</h3>
+        <p>Arrow keys / WASD to move.<br/>Spacebar to shoot.<br/>Collect ✦ stars for bonus points!</p>
+        <div id="gov-score"></div>
+        <button class="btn btn-primary" onclick="startGame()" style="font-size:0.85rem;padding:0.7rem 1.6rem">Launch 🚀</button>
+      </div>
+    </div>
+    <div class="game-hud">
+      <div>score <span id="gs">0</span></div>
+      <div>lives <span id="gl">❤❤❤</span></div>
+      <div>best <span id="gb">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── IMPACT (flush to hero) ── -->
+<div class="impact-section">
+  <div class="impact-inner">
+    <div>
+      <div class="impact-title">By the numbers.</div>
+      <div class="impact-sub">Real results from real work.</div>
+    </div>
+    <div class="impact-grid">
+      <div class="imp-card"><span class="imp-num">90%</span><div class="imp-label">Canadarm3 fault detection precision</div></div>
+      <div class="imp-card"><span class="imp-num">96.9%</span><div class="imp-label">fall detection accuracy (NeuroGuard)</div></div>
+      <div class="imp-card"><span class="imp-num">200+</span><div class="imp-label">ops hours/year saved at Omori</div></div>
+      <div class="imp-card"><span class="imp-num">1,200</span><div class="imp-label">sim datasets generated per day</div></div>
+      <div class="imp-card"><span class="imp-num">&lt;100ms</span><div class="imp-label">real-time robot control latency</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NEURAL NET ── -->
+<div class="nn-section">
+  <div class="nn-inner">
+    <div class="nn-header">
+      <div>
+        <div class="sec-label" style="color:var(--peach)">✦ interactive</div>
+        <div class="nn-title">A network that<br/>thinks with you.</div>
+      </div>
+      <div class="nn-desc">
+        Move your cursor across the canvas to <strong>fire neurons</strong> and watch activations ripple through the layers — input → hidden → output.<br/><br/>
+        This is what I build: systems that process, learn, and respond. The brighter the node, the stronger the activation signal. Output nodes light up with what I can do for your team.
+      </div>
+    </div>
+    <canvas id="nn-canvas" width="1040" height="320"></canvas>
+    <div class="nn-hint">✦ move your cursor over the network to activate neurons</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<div class="section" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="sec-label">✦ about me</div>
+      <h2 class="sec-title">Engineer. Builder.<br/>Hard to put in a box.</h2>
+      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I'm a Computer Engineering + AI student at the University of Waterloo, and a Schulich Leader Scholar — 1 of 50 in Canada awarded a $120K national STEM scholarship.</p>
+      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I've shipped production software at MDA Space, CIBC Capital Markets, and Omori, and I lead teams as comfortably as I write code. My background spans robotics, quant finance, computer vision, and full-stack dev.</p>
+      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid)">Actively looking for SWE, ML/AI, and TPM roles where I can own hard problems end-to-end.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.7rem">
+      <div class="about-fact"><div class="about-fact-label">currently</div><div class="about-fact-val">AI SWE @ Communitech + Robotics Research @ UWaterloo</div></div>
+      <div class="about-fact"><div class="about-fact-label">scholarship</div><div class="about-fact-val">Schulich Leader — 1 of 50 in Canada 🎓</div></div>
+      <div class="about-fact"><div class="about-fact-label">fun fact</div><div class="about-fact-val">Led 15 engineers to ship a full electric skateboard from scratch</div></div>
+      <div class="about-fact"><div class="about-fact-label">education</div><div class="about-fact-val">BASc Computer Engineering + AI, University of Waterloo</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SKILLS ── -->
+<div class="section" id="skills" style="padding-top:0">
+  <div class="sec-label">✦ skills</div>
+  <h2 class="sec-title">What I bring<br/>to the table.</h2>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-group-title">languages</div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">95%</span></div><div class="bar-track"><div class="bar-fill" data-w="95"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">C / C++</span><span class="skill-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">TypeScript / JS</span><span class="skill-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">SQL / R</span><span class="skill-pct">75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Go / Java</span><span class="skill-pct">65%</span></div><div class="bar-track"><div class="bar-fill" data-w="65"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-group-title">frameworks & tools</div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">PyTorch / TensorFlow</span><span class="skill-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">ROS 2 / Robotics</span><span class="skill-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">React / React Native</span><span class="skill-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Docker / Kubernetes</span><span class="skill-pct">75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
+      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Bloomberg / Quant</span><span class="skill-pct">70%</span></div><div class="bar-track"><div class="bar-fill" data-w="70"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ── -->
+<div style="padding:0 3rem;max-width:1100px;margin:0 auto 2rem" id="experience">
+  <div class="exp-section">
+    <div class="sec-label">✦ experience</div>
+    <h2 class="sec-title">Where I've<br/>made an impact.</h2>
+    <div class="exp-tabs" id="exp-tabs">
+      <div class="exp-tab active" data-i="0">Communitech</div>
+      <div class="exp-tab" data-i="1">UWaterloo</div>
+      <div class="exp-tab" data-i="2">CIBC</div>
+      <div class="exp-tab" data-i="3">MDA Space</div>
+      <div class="exp-tab" data-i="4">Omori</div>
+    </div>
+    <div id="exp-panels">
+      <div class="exp-panel active" data-i="0">
+        <div class="exp-header"><div class="exp-role">AI Software Engineer</div><div class="exp-date-badge">May – Aug 2026</div></div>
+        <div class="exp-company">Communitech · Waterloo, Ontario</div>
+        <ul class="exp-bullets"><li>Selected to collaborate with high-growth startups and AltaML to design and deploy AI-powered solutions across real-world business applications.</li></ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">AI/ML</span><span class="tag">Full Stack</span></div>
+      </div>
+      <div class="exp-panel" data-i="1">
+        <div class="exp-header"><div class="exp-role">Undergraduate Research Assistant</div><div class="exp-date-badge">Jan – Apr 2026</div></div>
+        <div class="exp-company">ERA Robotics Lab · University of Waterloo</div>
+        <ul class="exp-bullets">
+          <li>Architecting a sub-100ms real-time human-in-the-loop control stack for multi-robot coordination across 6 RoboMaster platforms via a full ROS 2 pipeline.</li>
+          <li>Enabling wearable-based teleoperation across 5 robots by integrating a SenseGlove interface that maps finger motions to synchronized, low-latency robot actions.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">ROS 2</span></div>
+      </div>
+      <div class="exp-panel" data-i="2">
+        <div class="exp-header"><div class="exp-role">Global Markets Quant Intern</div><div class="exp-date-badge">Sep – Dec 2025</div></div>
+        <div class="exp-company">CIBC Capital Markets · Toronto, Ontario</div>
+        <ul class="exp-bullets">
+          <li>Delivered 15+ quantitative momentum and regime-detection models using Python-based statistical pipelines on Bloomberg time-series data.</li>
+          <li>Validated a published time-series momentum framework with 100% replication accuracy in R across 3+ asset classes.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Bloomberg Terminal</span></div>
+      </div>
+      <div class="exp-panel" data-i="3">
+        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">Jan – Apr 2025</div></div>
+        <div class="exp-company">MDA Space · Toronto, Ontario</div>
+        <ul class="exp-bullets">
+          <li>Optimized Canadarm3 fault detection to 90% precision, 84.2% recall, 87.0% F1 via an LSTM + One-Class SVM anomaly detection pipeline.</li>
+          <li>Automated ~1,200 AGXUnity simulation datasets/day for training data, reducing overfitting under real-world failure conditions.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">LSTM</span><span class="tag">SVM</span><span class="tag">AGXUnity</span></div>
+      </div>
+      <div class="exp-panel" data-i="4">
+        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">May – Aug 2024</div></div>
+        <div class="exp-company">Omori North America · Toronto, Ontario</div>
+        <ul class="exp-bullets">
+          <li>Eliminated 200+ hours/year of operational overhead and cut manual entry errors by 80% by designing and shipping a full-stack machine configuration ordering platform.</li>
+          <li>Designed SQL schemas improving system reliability and reducing data inconsistencies across the configuration workflow.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROJECTS ── -->
+<div class="section" id="projects" style="padding-top:1.5rem">
+  <div class="sec-label">✦ projects</div>
+  <h2 class="sec-title">Things I've<br/>built & shipped.</h2>
+  <div class="proj-grid">
+    <a class="proj-card" href="https://github.com/rishaband/NeuroGuard" target="_blank" rel="noopener noreferrer">
+      <div class="proj-icon">🧠</div>
+      <div class="proj-name">NeuroGuard</div>
+      <div class="proj-desc">Real-time fall detection for at-risk patients using OpenCV + MediaPipe pose estimation + unsupervised ML. End-to-end Python event pipeline with React dashboard and live clinician alerts. Built at Hack the North.</div>
+      <div class="proj-metric">96.9% detection accuracy</div><span class="proj-github">⌥ view on github →</span>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">React Native</span></div>
+    </a>
+    <a class="proj-card" href="https://github.com/mahijoshii/fundr" target="_blank" rel="noopener noreferrer">
+      <div class="proj-icon">💡</div>
+      <div class="proj-name">Fundr</div>
+      <div class="proj-desc">Semantic grant-matching platform with ~0.80 cosine similarity across hundreds of records. Swipe UI, Snowflake data integration, FastAPI backend, CI/CD. Shipped in 24 hours at Hack the Valley.</div>
+      <div class="proj-metric">~0.80 avg top-5 similarity</div><span class="proj-github">⌥ view on github →</span>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">Gemini API</span></div>
+    </a>
+    <div class="proj-card" style="cursor:default">
+      <div class="proj-icon">⚡</div>
+      <div class="proj-name">Electric Skateboard</div>
+      <div class="proj-desc">Led a 15-member cross-functional team across mechanical, electrical, and firmware from design through system validation. C++ firmware on STM32 with &lt;50ms real-time LED response on 20+ test runs.</div>
+      <div class="proj-metric">&lt;50ms firmware response</div>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">C++</span><span class="tag">STM32</span><span class="tag">SolidWorks</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon">🦾</div>
+      <div class="proj-name">Multi-Robot Teleoperation</div>
+      <div class="proj-desc">Full ROS 2 pipeline for human-in-the-loop teleoperation across 5 RoboMaster robots via SenseGlove wearable. Sub-100ms latency. Ongoing research under faculty supervision at UWaterloo.</div>
+      <div class="proj-metric">&lt;100ms control latency</div>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">C++</span></div>
+    </div>
+    <a class="proj-card" href="https://github.com/mahijoshii/pixel" target="_blank" rel="noopener noreferrer">
+      <div class="proj-icon">🤖</div>
+      <div class="proj-name">Pixel — Autonomous Robot</div>
+      <div class="proj-desc">Differential-drive robot on STM32 Nucleo-F401RE that autonomously navigates using HC-SR04 ultrasonic sensing and PWM-based motor control via L298N driver. Modular embedded C firmware with real-time obstacle avoidance.</div>
+      <div class="proj-metric">&lt;100ms real-time control</div><span class="proj-github">⌥ view on github →</span>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">Embedded C</span><span class="tag">STM32</span><span class="tag">PWM</span><span class="tag">Robotics</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="sec-label" style="color:var(--peach)">✦ say hello</div>
+      <h2 class="sec-title">Let's build<br/>something great.</h2>
+      <p>Actively looking for SWE, ML/AI, and TPM opportunities at ambitious companies. Always happy to chat!</p>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:m6joshi@uwaterloo.ca" class="contact-link">
+        <div class="cl-icon">✉</div>
+        <div><div class="cl-label">email</div><div class="cl-val">m6joshi@uwaterloo.ca</div></div>
+      </a>
+      <a href="https://linkedin.com/in/mahi-joshi-ba904b211" target="_blank" class="contact-link">
+        <div class="cl-icon">in</div>
+        <div><div class="cl-label">linkedin</div><div class="cl-val">mahi-joshi-ba904b211</div></div>
+      </a>
+      <a href="https://github.com/mahijoshii" target="_blank" class="contact-link">
+        <div class="cl-icon">gh</div>
+        <div><div class="cl-label">github</div><div class="cl-val">mahijoshii</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>crafted with care ✦ mahi joshi © 2026</footer>
+
+<script>
+/* ── EXPERIENCE TABS ── */
+document.getElementById('exp-tabs').addEventListener('click', e => {
+  const t = e.target.closest('.exp-tab');
+  if (!t) return;
+  const i = t.dataset.i;
+  document.querySelectorAll('.exp-tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.exp-panel').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelector('.exp-panel[data-i="' + i + '"]').classList.add('active');
+});
+
+/* ── SKILL BARS (animate on scroll) ── */
+const skillObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.bar-fill').forEach(b => { b.style.width = b.dataset.w + '%'; });
+      skillObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('#skills').forEach(s => skillObs.observe(s));
+
+/* ── NEURAL NETWORK ── */
+(function () {
+  const c = document.getElementById('nn-canvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const W = 1040, H = 320;
+  c.width = W; c.height = H;
+
+  const layers = [
+    { n: 6, label: 'input' },
+    { n: 8, label: 'hidden 1' },
+    { n: 8, label: 'hidden 2' },
+    { n: 6, label: 'hidden 3' },
+    { n: 4, label: 'output' }
+  ];
+  const outputLabels = ['SWE', 'ML / AI', 'TPM', 'Research'];
+  const layerX = layers.map((_, i) => 80 + i * (W - 160) / (layers.length - 1));
+
+  const nodes = [];
+  layers.forEach((l, li) => {
+    for (let ni = 0; ni < l.n; ni++) {
+      const gap = H / (l.n + 1);
+      nodes.push({ li, ni, x: layerX[li], y: gap * (ni + 1), act: 0, targetAct: 0 });
+    }
+  });
+
+  const edges = [];
+  for (let li = 0; li < layers.length - 1; li++) {
+    const from = nodes.filter(n => n.li === li);
+    const to = nodes.filter(n => n.li === li + 1);
+    from.forEach(f => to.forEach(t => {
+      edges.push({ f, t, w: Math.random() * 0.6 + 0.2 });
+    }));
+  }
+
+  let mouse = { x: -999, y: -999 };
+  // track mouse relative to canvas
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect();
+    mouse.x = (e.clientX - r.left) * (W / r.width);
+    mouse.y = (e.clientY - r.top) * (H / r.height);
+  });
+  c.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
+  const sig = x => 1 / (1 + Math.exp(-x * 4));
+
+  function compute() {
+    nodes.filter(n => n.li === 0).forEach(n => {
+      const d = Math.hypot(mouse.x - n.x, mouse.y - n.y);
+      n.targetAct = Math.max(0, 1 - d / 220);
+    });
+    for (let li = 1; li < layers.length; li++) {
+      nodes.filter(n => n.li === li).forEach(t => {
+        const sum = edges.filter(e => e.t === t).reduce((acc, e) => acc + e.f.act * e.w, 0);
+        t.targetAct = sig(sum - 0.5);
+      });
+    }
+    nodes.forEach(n => { n.act += (n.targetAct - n.act) * 0.12; });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#0a0605';
+    ctx.fillRect(0, 0, W, H);
+
+    edges.forEach(e => {
+      const alpha = e.f.act * e.t.act * 0.7;
+      if (alpha < 0.01) return;
+      ctx.beginPath();
+      ctx.moveTo(e.f.x, e.f.y);
+      ctx.lineTo(e.t.x, e.t.y);
+      ctx.strokeStyle = `rgba(242,196,168,${Math.min(alpha * 1.2, 0.65)})`;
+      ctx.lineWidth = alpha * 2.5;
+      ctx.stroke();
+    });
+
+    nodes.forEach(n => {
+      const a = n.act;
+      const r = 7 + a * 6;
+      if (a > 0.15) {
+        const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 3.5);
+        grd.addColorStop(0, `rgba(242,196,168,${a * 0.3})`);
+        grd.addColorStop(1, 'rgba(242,196,168,0)');
+        ctx.beginPath(); ctx.arc(n.x, n.y, r * 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = grd; ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${Math.floor(201 + 41 * a)},${Math.floor(123 + 73 * a)},${Math.floor(110 + 58 * a)},${0.2 + a * 0.8})`;
+      ctx.fill();
+      ctx.strokeStyle = `rgba(242,196,168,${a * 0.8 + 0.15})`;
+      ctx.lineWidth = 1; ctx.stroke();
+    });
+
+    // layer labels
+    layers.forEach((l, li) => {
+      ctx.fillStyle = 'rgba(242,196,168,0.25)';
+      ctx.font = '11px DM Sans,sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(l.label, layerX[li], H - 6);
+    });
+
+    // output labels
+    nodes.filter(n => n.li === layers.length - 1).forEach((n, i) => {
+      if (n.act > 0.25) {
+        ctx.fillStyle = `rgba(242,196,168,${n.act})`;
+        ctx.font = `500 11px DM Sans,sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText(outputLabels[i], n.x + 14, n.y + 4);
+      }
+    });
+  }
+
+  (function loop() { compute(); draw(); requestAnimationFrame(loop); })();
+})();
+
+/* ── SPACE SHOOTER GAME ── */
+const canvas = document.getElementById('gc');
+const gctx = canvas.getContext('2d');
+const GW = 380, GH = 420;
+canvas.width = GW; canvas.height = GH;
+
+let gRunning = false, score = 0, best = 0, lives = 3, level = 1;
+let bullets = [], asteroids = [], stars = [], particles = [];
+let ship = { x: GW / 2, y: GH - 60, speed: 5 };
+let keys = {}, lastTime = 0, asteroidTimer = 0, starTimer = 0, shootCooldown = 0, animId;
+
+function resetGame() {
+  score = 0; lives = 3; level = 1;
+  bullets = []; asteroids = []; stars = []; particles = [];
+  ship.x = GW / 2; shootCooldown = 0; asteroidTimer = 0; starTimer = 0;
+  document.getElementById('gs').textContent = '0';
+  document.getElementById('gl').textContent = '❤❤❤';
+}
+
+function startGame() {
+  resetGame(); gRunning = true;
+  document.getElementById('gov').style.display = 'none';
+  lastTime = performance.now();
+  animId = requestAnimationFrame(gloop);
+}
+
+function endGame() {
+  gRunning = false; cancelAnimationFrame(animId);
+  if (score > best) { best = score; document.getElementById('gb').textContent = best; }
+  const ov = document.getElementById('gov');
+  ov.querySelector('h3').textContent = score >= 30 ? '🌟 Amazing!' : score >= 15 ? 'Nice flying!' : '💥 Game Over';
+  ov.querySelector('p').textContent = 'You scored ' + score + ' points' + (score === best && score > 0 ? ' — new high score! ✦' : '') + '.';
+  const sd = document.getElementById('gov-score');
+  sd.style.display = 'block'; sd.textContent = 'score: ' + score + ' | best: ' + best;
+  ov.querySelector('button').textContent = 'Play again 🚀';
+  ov.style.display = 'flex';
+}
+
+function spawnAsteroid() {
+  const sizes = [16, 22, 28];
+  const s = sizes[Math.floor(Math.random() * sizes.length)];
+  asteroids.push({ x: Math.random() * (GW - 40) + 20, y: -s, r: s, speed: 1 + Math.random() * 1.5 + level * 0.12, rot: 0, rotSpeed: (Math.random() - 0.5) * 0.05 });
+}
+function spawnStar() { stars.push({ x: Math.random() * (GW - 40) + 20, y: -10, speed: 1.2 + Math.random() }); }
+function spawnBullet() { bullets.push({ x: ship.x, y: ship.y - 16, speed: 9 }); }
+function spawnParticles(x, y, col, n) {
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2, sp = 1 + Math.random() * 3;
+    particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 1, col });
+  }
+}
+function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+
+function drawShip(x, y) {
+  gctx.save(); gctx.translate(x, y);
+  gctx.beginPath(); gctx.moveTo(0, -14); gctx.lineTo(11, 12); gctx.lineTo(0, 7); gctx.lineTo(-11, 12); gctx.closePath();
+  gctx.fillStyle = '#F7E8E0'; gctx.fill();
+  gctx.strokeStyle = '#C97B6E'; gctx.lineWidth = 1.5; gctx.stroke();
+  gctx.beginPath(); gctx.arc(0, -2, 5, 0, Math.PI * 2);
+  gctx.fillStyle = 'rgba(242,196,168,0.6)'; gctx.fill();
+  gctx.strokeStyle = '#E8A5A0'; gctx.lineWidth = 1; gctx.stroke();
+  if (keys['ArrowUp'] || keys['w']) {
+    gctx.beginPath(); gctx.moveTo(-5, 12); gctx.lineTo(0, 22 + Math.random() * 6); gctx.lineTo(5, 12);
+    gctx.fillStyle = 'rgba(242,196,168,0.8)'; gctx.fill();
+  }
+  gctx.restore();
+}
+
+function drawAsteroid(a) {
+  gctx.save(); gctx.translate(a.x, a.y); gctx.rotate(a.rot);
+  gctx.beginPath();
+  for (let i = 0; i < 8; i++) {
+    const ang = (i / 8) * Math.PI * 2;
+    const r = a.r * (0.75 + Math.sin(i * 7 + a.rot) * 0.25);
+    i === 0 ? gctx.moveTo(Math.cos(ang) * r, Math.sin(ang) * r) : gctx.lineTo(Math.cos(ang) * r, Math.sin(ang) * r);
+  }
+  gctx.closePath();
+  gctx.fillStyle = 'rgba(80,50,45,0.85)'; gctx.fill();
+  gctx.strokeStyle = 'rgba(201,123,110,0.4)'; gctx.lineWidth = 1.5; gctx.stroke();
+  gctx.restore();
+}
+
+function gloop(ts) {
+  const dt = Math.min(ts - lastTime, 50); lastTime = ts;
+  gctx.clearRect(0, 0, GW, GH);
+  gctx.fillStyle = '#0F0A0A'; gctx.fillRect(0, 0, GW, GH);
+
+  // starfield bg
+  gctx.fillStyle = 'rgba(250,240,234,0.25)';
+  for (let i = 0; i < 40; i++) {
+    gctx.fillRect((i * 73 + ts * 0.01 * (i % 3 + 1)) % GW, (i * 137 + ts * 0.005) % GH, 1, 1);
+  }
+
+  if ((keys['ArrowLeft'] || keys['a']) && ship.x > 20) ship.x -= ship.speed;
+  if ((keys['ArrowRight'] || keys['d']) && ship.x < GW - 20) ship.x += ship.speed;
+  if ((keys['ArrowUp'] || keys['w']) && ship.y > 40) ship.y -= ship.speed * 0.7;
+  if ((keys['ArrowDown'] || keys['s']) && ship.y < GH - 30) ship.y += ship.speed * 0.7;
+
+  shootCooldown -= dt;
+  if ((keys[' '] || keys['z']) && shootCooldown <= 0) { spawnBullet(); shootCooldown = 220; }
+
+  asteroidTimer += dt;
+  if (asteroidTimer > Math.max(700, 1600 - level * 80)) { spawnAsteroid(); asteroidTimer = 0; }
+  starTimer += dt;
+  if (starTimer > 2200) { spawnStar(); starTimer = 0; }
+  level = 1 + Math.floor(score / 10);
+
+  // bullets
+  bullets = bullets.filter(b => {
+    b.y -= b.speed;
+    if (b.y < -10) return false;
+    gctx.fillStyle = '#F2C4A8';
+    gctx.beginPath(); gctx.ellipse(b.x, b.y, 2, 5, 0, 0, Math.PI * 2); gctx.fill();
+    return true;
+  });
+
+  // asteroids
+  asteroids = asteroids.filter(a => {
+    a.y += a.speed * (dt / 16); a.rot += a.rotSpeed;
+    let hit = false;
+    bullets = bullets.filter(b => {
+      if (!hit && dist(b, a) < a.r + 4) {
+        hit = true; spawnParticles(a.x, a.y, '#D4897A', 8);
+        score += a.r > 24 ? 2 : 1;
+        document.getElementById('gs').textContent = score;
+        return false;
+      }
+      return true;
+    });
+    if (hit) return false;
+    if (dist(a, ship) < a.r + 10) {
+      lives--;
+      const h = ['', '❤', '❤❤', '❤❤❤'];
+      document.getElementById('gl').textContent = h[Math.max(0, lives)] || '';
+      spawnParticles(ship.x, ship.y, '#E8A5A0', 12);
+      if (lives <= 0) { endGame(); return false; }
+      return false;
+    }
+    if (a.y > GH + a.r) return false;
+    drawAsteroid(a);
+    return true;
+  });
+
+  // stars
+  stars = stars.filter(s => {
+    s.y += s.speed * (dt / 16);
+    if (dist(s, ship) < 20) {
+      score += 3; document.getElementById('gs').textContent = score;
+      spawnParticles(s.x, s.y, '#F2C4A8', 6);
+      return false;
+    }
+    if (s.y > GH + 10) return false;
+    gctx.fillStyle = '#F2C4A8'; gctx.font = '12px serif';
+    gctx.textAlign = 'center'; gctx.textBaseline = 'middle';
+    gctx.fillText('✦', s.x, s.y);
+    return true;
+  });
+
+  // particles
+  particles = particles.filter(p => {
+    p.x += p.vx; p.y += p.vy; p.life -= 0.04;
+    gctx.globalAlpha = p.life;
+    gctx.fillStyle = p.col; gctx.fillRect(p.x, p.y, 2, 2);
+    gctx.globalAlpha = 1;
+    return p.life > 0;
+  });
+
+  drawShip(ship.x, ship.y);
+
+  gctx.fillStyle = 'rgba(242,196,168,0.7)';
+  gctx.font = '500 12px DM Sans,sans-serif';
+  gctx.textAlign = 'left'; gctx.fillText('LVL ' + level, 10, 18);
+  gctx.textAlign = 'right'; gctx.fillText('SPACE to shoot', GW - 10, 18);
+
+  if (gRunning) animId = requestAnimationFrame(gloop);
+}
+
+document.addEventListener('keydown', e => { keys[e.key] = true; if (e.key === ' ') e.preventDefault(); });
+document.addEventListener('keyup', e => { keys[e.key] = false; });
+
+let touchX = null;
+canvas.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; e.preventDefault(); }, { passive: false });
+canvas.addEventListener('touchmove', e => {
+  if (touchX === null) return;
+  ship.x = Math.max(20, Math.min(GW - 20, ship.x + (e.touches[0].clientX - touchX) * 1.2));
+  touchX = e.touches[0].clientX;
+  e.preventDefault();
+}, { passive: false });
+canvas.addEventListener('touchend', () => { keys[' '] = true; setTimeout(() => keys[' '] = false, 100); }, { passive: false });
+
+
+/* ── FLOATING ROBOT COMPANION ── */
+document.addEventListener('DOMContentLoaded', function () {
+  const robot = document.getElementById('robot-companion');
+  const floater = document.getElementById('robot-float');
+  const bubble = document.getElementById('robot-bubble');
+  const bubbleText = document.getElementById('robot-bubble-text');
+  const badge = document.getElementById('robot-badge');
+  const body = document.getElementById('robot-body');
+  if (!robot || !floater || !bubble || !bubbleText || !badge || !body) return;
+
+  const facts = [
+    "Mahi did competitive gymnastics, so yes, the discipline and chaos tolerance started early.",
+    "She trained in ballet for 14 years, which might explain the mix of precision, patience, and strong posture.",
+    "When she started university, she won a $120K scholarship :) kind of iconic.",
+    "Mahi keeps a Sudoku book with her to keep her mind stimulated!",
+    "Mahi won a hackathon and was able to present her project @ Microsoft HQ in Toronto.",
+    "She loves cooking and baking, so building things doesn't stop at code... sometimes it ends in dessert :D.",
+    "She loves Harry Potter! She's read the books, seen the movies, and been to Universal!",
+    "Mahi has been an ambassador for Canadian Association for Girls in Science (CAGIS), and Canada Learning Code (CLC)!",
+    "She's into running and wants to run a marathon soon.",
+    "Mahi began a STEM Club in high school, and it is still growing to this day.",
+    "She sometimes builds things just to see if she can.",
+    "Mahi has been to 15+ countries and genuinely loves traveling.",
+    "Mahi has a habit of turning small ideas into full projects.",
+    "She loves building things, whether that's robots, full-stack apps, or ideas that somehow become real."
+  ];
+
+  let factIndex = 0;
+  let bubbleTimer = null;
+  let introTimer = null;
+  let attentionTimer = null;
+  let lastClick = Date.now();
+  let visible = true;
+  let introActive = true;
+
+  function hideBubble() {
+    bubble.classList.remove('show');
+    visible = false;
+  }
+
+  function showBubble(text, autoHideMs = 6500, hintText = '') {
+    bubbleText.textContent = text;
+    const hint = bubble.querySelector('.robot-bubble-hint');
+    if (hint) {
+      hint.textContent = hintText;
+      hint.style.display = hintText ? 'block' : 'none';
+    }
+    bubble.classList.add('show');
+    visible = true;
+    if (bubbleTimer) clearTimeout(bubbleTimer);
+    if (autoHideMs > 0) {
+      bubbleTimer = setTimeout(() => {
+        hideBubble();
+      }, autoHideMs);
+    }
+  }
+
+  function nextFact() {
+    const text = facts[factIndex % facts.length];
+    factIndex += 1;
+    return text;
+  }
+
+  function celebrateAttention() {
+    badge.classList.add('show');
+    floater.classList.add('attention');
+    floater.classList.add('wave');
+    setTimeout(() => badge.classList.remove('show'), 2200);
+    setTimeout(() => {
+      floater.classList.remove('attention');
+      floater.classList.remove('wave');
+    }, 2500);
+  }
+
+  function maybeGrabAttention() {
+    const idleFor = Date.now() - lastClick;
+    if (idleFor > 18000 && !visible) {
+      celebrateAttention();
+    }
+  }
+
+  function onActivate() {
+    lastClick = Date.now();
+    body.blur();
+
+    if (introActive) {
+      introActive = false;
+      if (introTimer) clearTimeout(introTimer);
+      if (bubbleTimer) clearTimeout(bubbleTimer);
+    }
+
+    showBubble(nextFact(), 7000, '');
+    floater.classList.add('wave');
+    setTimeout(() => floater.classList.remove('wave'), 2400);
+    badge.classList.remove('show');
+  }
+
+  body.addEventListener('click', onActivate);
+  body.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onActivate();
+    }
+  });
+
+  introTimer = setTimeout(() => {
+    introActive = false;
+    hideBubble();
+  }, 60000);
+
+  attentionTimer = setInterval(maybeGrabAttention, 5000);
+})();
+
+</script>
+
+<!-- ── FLOATING ROBOT COMPANION ── -->
+<div id="robot-companion" aria-live="polite">
+  <div id="robot-bubble" class="show">
+    <div class="robot-bubble-label">mini mahi-bot</div>
+    <div class="robot-bubble-text" id="robot-bubble-text">hi! i'm your tiny site guide ✨ click me for fun facts about mahi.</div>
+  </div>
+  <div class="robot-shadow"></div>
+  <div id="robot-float">
+    <div id="robot-body" role="button" tabindex="0" aria-label="Open fun facts about Mahi">
+      <div id="robot-badge">!!</div>
+      <div class="robot-head">
+        <div class="tip left"></div>
+        <div class="tip right"></div>
+        <div class="robot-ear left"></div>
+        <div class="robot-ear right"></div>
+        <div class="robot-highlight"></div>
+        <div class="robot-face">
+          <div class="robot-eye left"></div>
+          <div class="robot-eye right"></div>
+          <div class="robot-cheek left"></div>
+          <div class="robot-cheek right"></div>
+          <div class="robot-mouth"></div>
+        </div>
+      </div>
+      <div class="robot-arm left"><div class="robot-hand left"></div></div>
+      <div class="robot-arm right"><div class="robot-hand right"></div></div>
+      <div class="robot-torso"><div class="robot-heart">💜</div></div>
+      <div class="robot-leg left"></div>
+      <div class="robot-leg right"></div>
+      <div class="robot-foot left"></div>
+      <div class="robot-foot right"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
