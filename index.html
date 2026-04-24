@@ -79,7 +79,11 @@ canvas#gc{display:block;width:100%}
 .impact-sub{font-size:0.82rem;color:rgba(250,240,234,0.4);margin-top:0.2rem}
 
 /* ── NEURAL NET ── */
-.nn-section{background:var(--dark);padding:0 3rem 3.5rem}
+.nn-section{
+  background:var(--dark);
+  padding:0 3rem 3.5rem;
+  margin-bottom:4rem; 
+}
 .nn-inner{max-width:1100px;margin:0 auto}
 .nn-header{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2rem}
 .nn-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#FAF0EA;line-height:1.15}
@@ -243,6 +247,146 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
 @keyframes sunFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(4deg)}}
 @keyframes sunSpin{to{transform:rotate(360deg)}}
 
+
+
+
+/* ── EXPERIENCE TIMELINE REFRESH ── */
+.exp-wrap{padding:0 3rem;max-width:1100px;margin:0 auto 2.8rem}
+.exp-section{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#fffaf3 0%,#fff2ee 45%,#f9e8ff 100%);
+  border:1px solid rgba(201,123,110,0.16);
+  border-radius:32px;
+  padding:3rem;
+  box-shadow:0 24px 70px rgba(201,123,110,0.09);
+}
+.exp-section::before{
+  content:"";
+  position:absolute;
+  right:-90px;
+  top:-110px;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:rgba(255,216,107,0.25);
+}
+.exp-section::after{
+  content:"";
+  position:absolute;
+  left:-110px;
+  bottom:-130px;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:rgba(244,166,224,0.14);
+}
+.exp-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:2rem;align-items:flex-end;margin-bottom:2rem}
+.exp-top .sec-title{margin-bottom:0}
+.exp-intro{max-width:400px;font-size:0.88rem;line-height:1.75;color:var(--mid)}
+.exp-layout{position:relative;z-index:1;display:grid;grid-template-columns:250px 1fr;gap:1.5rem;align-items:stretch}
+.exp-tabs{
+  display:flex;
+  flex-direction:column;
+  gap:0.7rem;
+  margin:0;
+  border-bottom:0;
+  overflow:visible;
+}
+.exp-tab{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:0.8rem;
+  padding:0.9rem 1rem;
+  border:1px solid rgba(201,123,110,0.16);
+  border-radius:18px;
+  background:rgba(255,255,255,0.58);
+  color:var(--mid);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform 0.22s,border-color 0.22s,background 0.22s,box-shadow 0.22s,color 0.22s;
+  white-space:normal;
+}
+.exp-tab::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:rgba(201,123,110,0.26);
+  box-shadow:0 0 0 5px rgba(201,123,110,0.06);
+  flex-shrink:0;
+}
+.exp-tab:hover{transform:translateX(4px);border-color:rgba(201,123,110,0.34);background:rgba(255,255,255,0.76);color:var(--accent)}
+.exp-tab.active{
+  color:var(--dark);
+  border-color:rgba(201,123,110,0.36);
+  background:#fff;
+  box-shadow:0 14px 34px rgba(201,123,110,0.12);
+}
+.exp-tab.active::before{background:var(--accent);box-shadow:0 0 0 6px rgba(201,123,110,0.12)}
+.exp-panels-shell{
+  position:relative;
+  min-height:375px;
+  border-radius:26px;
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(201,123,110,0.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.7);
+  padding:1.35rem;
+}
+.exp-panel{display:none}
+.exp-panel.active{display:block;animation:softFade 0.32s ease}
+.exp-card-main{
+  position:relative;
+  overflow:hidden;
+  min-height:345px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff 0%,#fff7f2 100%);
+  border:1px solid rgba(201,123,110,0.14);
+  padding:1.6rem;
+}
+.exp-card-main::before{
+  content:"";
+  position:absolute;
+  right:-50px;
+  top:-50px;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:rgba(242,196,168,0.22);
+}
+.exp-header{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem;flex-wrap:wrap;gap:0.7rem}
+.exp-role{font-family:'DM Serif Display',serif;font-size:clamp(1.55rem,3vw,2.05rem);line-height:1.05;color:var(--dark)}
+.exp-date-badge{font-size:0.72rem;font-weight:600;color:var(--accent);background:rgba(255,255,255,0.75);border:1px solid rgba(201,123,110,0.2);padding:0.4rem 0.8rem;border-radius:999px;white-space:nowrap}
+.exp-company{position:relative;z-index:1;font-size:0.9rem;color:var(--accent);font-weight:500;margin-bottom:1rem}
+.exp-snapshot{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:1rem 0 1.25rem}
+.exp-snap{border-radius:16px;background:rgba(253,248,244,0.82);border:1px solid rgba(201,123,110,0.13);padding:0.85rem}
+.exp-snap-label{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.25rem}
+.exp-snap-val{font-size:0.82rem;color:var(--dark);line-height:1.45;font-weight:500}
+.exp-bullets{position:relative;z-index:1;list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-top:0.3rem}
+.exp-bullets li{font-size:0.88rem;line-height:1.75;color:var(--mid);padding-left:1.35rem;position:relative}
+.exp-bullets li::before{content:'✦';position:absolute;left:0;color:var(--accent);font-size:0.72rem;top:0.38rem}
+.exp-tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:1.15rem}
+.tag{font-size:0.7rem;padding:0.26rem 0.7rem;border-radius:999px;background:rgba(201,123,110,0.08);border:1px solid rgba(201,123,110,0.18);color:var(--accent)}
+@keyframes softFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width: 900px){
+  .exp-layout{grid-template-columns:1fr}
+  .exp-tabs{flex-direction:row;overflow-x:auto;padding-bottom:0.4rem}
+  .exp-tab{min-width:150px;white-space:nowrap}
+  .exp-top{display:block}
+  .exp-intro{margin-top:0.8rem}
+}
+@media (max-width: 650px){
+  .exp-wrap{padding-left:1.2rem;padding-right:1.2rem}
+  .exp-section{padding:2rem 1.3rem}
+  .exp-snapshot{grid-template-columns:1fr}
+  .exp-panels-shell{padding:0.9rem}
+  .exp-card-main{padding:1.25rem;min-height:auto}
+}
 
 /* ── FLOATING ROBOT ── */
 :root{
@@ -703,59 +847,102 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
 
 
 <!-- ── EXPERIENCE ── -->
-<div style="padding:0 3rem;max-width:1100px;margin:0 auto 2rem" id="experience">
+<div class="exp-wrap" id="experience">
   <div class="exp-section">
-    <div class="sec-label">✦ experience</div>
-    <h2 class="sec-title">Where I've<br/>made an impact.</h2>
-    <div class="exp-tabs" id="exp-tabs">
-      <div class="exp-tab active" data-i="0">Communitech</div>
-      <div class="exp-tab" data-i="1">UWaterloo</div>
-      <div class="exp-tab" data-i="2">CIBC</div>
-      <div class="exp-tab" data-i="3">MDA Space</div>
-      <div class="exp-tab" data-i="4">Omori</div>
+    <div class="exp-top">
+      <div>
+        <div class="sec-label">✦ experience</div>
+        <h2 class="sec-title">A closer look at<br/>where I've worked.</h2>
+      </div>
+      <p class="exp-intro">A timeline of roles where I have built across AI, robotics, markets, space systems, and full-stack software.</p>
     </div>
-    <div id="exp-panels">
-      <div class="exp-panel active" data-i="0">
-        <div class="exp-header"><div class="exp-role">AI Software Engineer</div><div class="exp-date-badge">May - Aug 2026</div></div>
-        <div class="exp-company">Communitech · Waterloo, Ontario</div>
-        <ul class="exp-bullets"><li>Selected to collaborate with high-growth startups and AltaML to design and deploy AI-powered solutions across real-world business applications.</li></ul>
-        <div class="exp-tags"><span class="tag">Python</span><span class="tag">AI/ML</span><span class="tag">Full Stack</span></div>
+
+    <div class="exp-layout">
+      <div class="exp-tabs" id="exp-tabs">
+        <div class="exp-tab active" data-i="0">Communitech</div>
+        <div class="exp-tab" data-i="1">UWaterloo</div>
+        <div class="exp-tab" data-i="2">CIBC</div>
+        <div class="exp-tab" data-i="3">MDA Space</div>
+        <div class="exp-tab" data-i="4">Omori</div>
       </div>
-      <div class="exp-panel" data-i="1">
-        <div class="exp-header"><div class="exp-role">Undergraduate Research Assistant</div><div class="exp-date-badge">Jan - Apr 2026</div></div>
-        <div class="exp-company">ERA Robotics Lab · University of Waterloo</div>
-        <ul class="exp-bullets">
-          <li>Architecting a sub-100ms real-time human-in-the-loop control stack for multi-robot coordination across 6 RoboMaster platforms via a full ROS 2 pipeline.</li>
-          <li>Enabling wearable-based teleoperation across 5 robots by integrating a SenseGlove interface that maps finger motions to synchronized, low-latency robot actions.</li>
-        </ul>
-        <div class="exp-tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">ROS 2</span></div>
-      </div>
-      <div class="exp-panel" data-i="2">
-        <div class="exp-header"><div class="exp-role">Global Markets Quant Intern</div><div class="exp-date-badge">Sep - Dec 2025</div></div>
-        <div class="exp-company">CIBC Capital Markets · Toronto, Ontario</div>
-        <ul class="exp-bullets">
-          <li>Delivered 15+ quantitative momentum and regime-detection models using Python-based statistical pipelines on Bloomberg time-series data.</li>
-          <li>Validated a published time-series momentum framework with 100% replication accuracy in R across 3+ asset classes.</li>
-        </ul>
-        <div class="exp-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Bloomberg Terminal</span></div>
-      </div>
-      <div class="exp-panel" data-i="3">
-        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">Jan - Apr 2025</div></div>
-        <div class="exp-company">MDA Space · Toronto, Ontario</div>
-        <ul class="exp-bullets">
-          <li>Optimized Canadarm3 fault detection to 90% precision, 84.2% recall, 87.0% F1 via an LSTM + One-Class SVM anomaly detection pipeline.</li>
-          <li>Automated ~1,200 AGXUnity simulation datasets/day for training data, reducing overfitting under real-world failure conditions.</li>
-        </ul>
-        <div class="exp-tags"><span class="tag">Python</span><span class="tag">LSTM</span><span class="tag">SVM</span><span class="tag">AGXUnity</span></div>
-      </div>
-      <div class="exp-panel" data-i="4">
-        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">May - Aug 2024</div></div>
-        <div class="exp-company">Omori North America · Toronto, Ontario</div>
-        <ul class="exp-bullets">
-          <li>Eliminated 200+ hours/year of operational overhead and cut manual entry errors by 80% by designing and shipping a full-stack machine configuration ordering platform.</li>
-          <li>Designed SQL schemas improving system reliability and reducing data inconsistencies across the configuration workflow.</li>
-        </ul>
-        <div class="exp-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span></div>
+
+      <div class="exp-panels-shell" id="exp-panels">
+        <div class="exp-panel active" data-i="0">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">AI Software Engineer</div><div class="exp-date-badge">May - Aug 2026</div></div>
+            <div class="exp-company">Communitech · Waterloo, Ontario</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Agentic AI solutions for real business workflows</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Startup-paced product building with applied AI</div></div>
+            </div>
+            <ul class="exp-bullets"><li>Selected to collaborate with high-growth startups and AltaML to design and deploy AI-powered solutions across real-world business applications.</li></ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">LLMs</span><span class="tag">AWS</span><span class="tag">Full Stack</span></div>
+          </div>
+        </div>
+
+        <div class="exp-panel" data-i="1">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">Undergraduate Research Assistant</div><div class="exp-date-badge">Jan - Apr 2026</div></div>
+            <div class="exp-company">ERA Robotics Lab · University of Waterloo</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Real-time multi-robot coordination and teleoperation</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Research code with latency and hardware constraints</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Architecting a sub-100ms real-time human-in-the-loop control stack for multi-robot coordination across 6 RoboMaster platforms via a full ROS 2 pipeline.</li>
+              <li>Enabling wearable-based teleoperation across 5 robots by integrating a SenseGlove interface that maps finger motions to synchronized, low-latency robot actions.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">ROS 2</span><span class="tag">Robotics</span></div>
+          </div>
+        </div>
+
+        <div class="exp-panel" data-i="2">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">Global Markets Quant Intern</div><div class="exp-date-badge">Sep - Dec 2025</div></div>
+            <div class="exp-company">CIBC Capital Markets · Toronto, Ontario</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Time-series modelling and market regime analysis</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Data-heavy research with clean validation</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Delivered 15+ quantitative momentum and regime-detection models using Python-based statistical pipelines on Bloomberg time-series data.</li>
+              <li>Validated a published time-series momentum framework with 100% replication accuracy in R across 3+ asset classes.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Bloomberg Terminal</span><span class="tag">Time Series</span></div>
+          </div>
+        </div>
+
+        <div class="exp-panel" data-i="3">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">Jan - Apr 2025</div></div>
+            <div class="exp-company">MDA Space · Toronto, Ontario</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">ML-based fault detection for space robotics</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Simulation data, anomaly detection, and model robustness</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Optimized Canadarm3 fault detection to 90% precision, 84.2% recall, 87.0% F1 via an LSTM + One-Class SVM anomaly detection pipeline.</li>
+              <li>Automated ~1,200 AGXUnity simulation datasets/day for training data, reducing overfitting under real-world failure conditions.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">LSTM</span><span class="tag">SVM</span><span class="tag">AGXUnity</span></div>
+          </div>
+        </div>
+
+        <div class="exp-panel" data-i="4">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">May - Aug 2024</div></div>
+            <div class="exp-company">Omori North America · Toronto, Ontario</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Internal tooling for machine configuration workflows</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Full-stack software with database-backed operations</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Eliminated 200+ hours/year of operational overhead and cut manual entry errors by 80% by designing and shipping a full-stack machine configuration ordering platform.</li>
+              <li>Designed SQL schemas improving system reliability and reducing data inconsistencies across the configuration workflow.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span><span class="tag">Full Stack</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
