@@ -159,6 +159,91 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
 }
 
 
+/* ── SIGNAL ── */
+.hero-sub strong{color:var(--dark);font-weight:500}
+.hero-focus{display:flex;flex-wrap:wrap;gap:0.5rem;margin:-0.6rem 0 1.5rem}
+.focus-pill{font-size:0.72rem;font-weight:500;color:var(--accent);background:rgba(201,123,110,0.08);border:1px solid rgba(201,123,110,0.18);padding:0.32rem 0.75rem;border-radius:999px}
+
+/* ── PRETTIER ABOUT ── */
+.about-section{position:relative;padding:4.5rem 3rem;max-width:1100px;margin:0 auto}
+.about-shell{position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(135deg,var(--softer),var(--soft));border:1px solid rgba(201,123,110,0.16);box-shadow:0 24px 70px rgba(201,123,110,0.08);padding:3rem}
+.about-shell::before{content:"";position:absolute;right:-120px;top:-120px;width:280px;height:280px;border-radius:50%;background:rgba(201,123,110,0.10)}
+.about-shell::after{content:"";position:absolute;left:-90px;bottom:-110px;width:260px;height:260px;border-radius:50%;background:rgba(242,196,168,0.25)}
+.about-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 0.95fr;gap:2.4rem;align-items:stretch}
+.about-copy{display:flex;flex-direction:column;justify-content:center}
+.about-lede{font-size:0.98rem;line-height:1.9;color:var(--mid);margin-bottom:1rem;max-width:560px}
+.about-lede strong{color:var(--dark);font-weight:500}
+.about-principle{margin-top:1.2rem;padding:1.1rem 1.2rem;border-left:3px solid var(--accent);background:rgba(253,248,244,0.68);border-radius:0 16px 16px 0;color:var(--mid);font-size:0.9rem;line-height:1.75}
+.about-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem}
+.about-fact{background:rgba(253,248,244,0.82);border:1px solid rgba(201,123,110,0.16);border-radius:18px;padding:1rem 1.05rem;transition:transform 0.22s,border-color 0.22s,box-shadow 0.22s}
+.about-fact:hover{transform:translateY(-3px);border-color:rgba(201,123,110,0.34);box-shadow:0 12px 28px rgba(201,123,110,0.08)}
+.about-fact-wide{grid-column:span 2}
+.about-fact-label{font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.35rem;font-weight:500}
+.about-fact-val{font-size:0.9rem;font-weight:500;color:var(--dark);line-height:1.55}
+.about-mini{font-size:0.78rem;color:var(--mid);font-weight:400;line-height:1.55;margin-top:0.3rem}
+
+/* ── IMPACT STRIP ── */
+.impact-section{background:var(--dark);padding:3.2rem 3rem}
+.impact-inner{max-width:1100px;margin:0 auto}
+.impact-top{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:1.4rem}
+.impact-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.35rem);color:#FAF0EA;line-height:1.15}
+.impact-sub{font-size:0.86rem;color:rgba(250,240,234,0.46);line-height:1.7;max-width:390px}
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.imp-card{text-align:left;padding:1.25rem;border:1px solid rgba(242,196,168,0.12);border-radius:18px;background:rgba(242,196,168,0.045);transition:border-color 0.3s,transform 0.3s,background 0.3s}
+.imp-card:hover{border-color:rgba(242,196,168,0.35);transform:translateY(-3px);background:rgba(242,196,168,0.075)}
+.imp-num{font-family:'DM Serif Display',serif;font-size:1.65rem;color:var(--peach);display:block;margin-bottom:0.3rem}
+.imp-label{font-size:0.72rem;color:rgba(250,240,234,0.58);letter-spacing:0.03em;line-height:1.55}
+
+@media (max-width: 900px){
+  .hero{grid-template-columns:1fr;padding-top:7rem;gap:2rem}
+  .hero-right{padding-left:0}
+  .about-grid{grid-template-columns:1fr}
+  .impact-top{display:block}
+  .impact-sub{margin-top:0.8rem}
+  .impact-grid{grid-template-columns:1fr 1fr}
+  .values-header{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width: 650px){
+  nav{padding:0.9rem 1.2rem}
+  .nav-links{gap:0.8rem}
+  .hero,.section,.about-section,.contact-section{padding-left:1.2rem;padding-right:1.2rem}
+  .hero-name-row{align-items:flex-start}
+  .hero-profile{width:82px;height:82px}
+  .hero-stats,.proj-grid,.impact-grid,.about-card-grid{grid-template-columns:1fr}
+  .about-fact-wide{grid-column:span 1}
+  .about-shell,.values-shell{padding:2rem 1.3rem}
+  .values-section{padding-left:1.2rem;padding-right:1.2rem}
+  .values-grid{grid-template-columns:1fr}
+  .sun-icon{width:70px;height:70px}
+  .contact-inner{grid-template-columns:1fr;padding:2rem}
+}
+
+
+/* ── THINGS I LIVE BY ── */
+.values-section{position:relative;padding:0 3rem 4.5rem;max-width:1100px;margin:0 auto}
+.values-shell{position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(135deg,#fff8df 0%,var(--softer) 45%,#fde8f1 100%);border:1px solid rgba(201,123,110,0.16);box-shadow:0 24px 70px rgba(201,123,110,0.08);padding:3rem}
+.values-shell::before{content:"";position:absolute;right:-80px;top:-80px;width:210px;height:210px;border-radius:50%;background:rgba(255,198,79,0.28);filter:blur(1px)}
+.values-shell::after{content:"";position:absolute;left:-70px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:rgba(244,166,224,0.18)}
+.values-header{position:relative;z-index:1;display:grid;grid-template-columns:0.75fr 1.25fr;gap:2rem;align-items:center;margin-bottom:2rem}
+.sun-wrap{display:flex;align-items:center;gap:1rem}
+.sun-icon{position:relative;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#fff6b5 0%,#ffd86b 48%,#f6a85c 100%);box-shadow:0 14px 36px rgba(246,168,92,0.28);animation:sunFloat 4s ease-in-out infinite;flex-shrink:0}
+.sun-icon::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(246,168,92,0.45) 0deg 10deg,transparent 10deg 22deg);z-index:-1;animation:sunSpin 18s linear infinite}
+.sun-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:1.55rem}
+.values-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);line-height:1.05;color:var(--dark);margin-top:0.35rem}
+.values-intro{font-size:0.94rem;line-height:1.85;color:var(--mid);max-width:560px}
+.values-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.value-card{position:relative;overflow:hidden;background:rgba(255,255,255,0.62);border:1px solid rgba(201,123,110,0.15);border-radius:22px;padding:1.2rem;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s,background 0.25s}
+.value-card:hover{transform:translateY(-5px);border-color:rgba(201,123,110,0.34);box-shadow:0 18px 38px rgba(201,123,110,0.11);background:rgba(255,255,255,0.78)}
+.value-card::before{content:"";position:absolute;right:-28px;top:-32px;width:86px;height:86px;border-radius:50%;background:rgba(255,216,107,0.22)}
+.value-emoji{font-size:1.45rem;margin-bottom:0.85rem}
+.value-text{font-family:'DM Serif Display',serif;font-size:1.18rem;line-height:1.25;color:var(--dark);position:relative;z-index:1}
+.value-note{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-top:1rem;font-weight:500;position:relative;z-index:1}
+@keyframes sunFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+@keyframes sunSpin{to{transform:rotate(360deg)}}
+
+
 /* ── FLOATING ROBOT ── */
 :root{
   --robot-pink:#F4A6E0;
@@ -486,6 +571,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <li><a href="#about">about</a></li>
     <li><a href="#experience">experience</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#values">values</a></li> 
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
@@ -498,15 +584,21 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <img src="profile.JPG" alt="Mahi Joshi" class="hero-profile"/>
     <h1 class="hero-name">Mahi<br/><em>Joshi.</em></h1>
   </div>
-    <p class="hero-sub">Computer Engineering & Artificial Intelligence at University of Waterloo. I build things that are fast and smart. From Agentic AI at startups, to Machine Learning for the International Space Station.</p>
+    <p class="hero-sub"><strong>Computer Engineering & Artificial Intelligence student at University of Waterloo</strong> building production software, ML systems, and real-time robotics. Targeting SWE, ML, and AI roles at ambitious engineering teams.</p>
+    <div class="hero-focus">
+      <span class="focus-pill">software engineering</span>
+      <span class="focus-pill">machine learning</span>
+      <span class="focus-pill">AI systems</span>
+      <span class="focus-pill">robotics</span>
+    </div>
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">internships</div></div>
       <div class="hstat"><div class="hstat-num">$120K</div><div class="hstat-label">Schulich Scholar</div></div>
       <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-label">engineers led</div></div>
     </div>
     <div class="hero-cta">
-      <a href="#experience" class="btn btn-primary">View my work</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <a href="#projects" class="btn btn-primary">See what I build</a>
+      <a href="#contact" class="btn btn-ghost">Let's get in touch</a>
     </div>
   </div>
   <div class="hero-right">
@@ -528,9 +620,67 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
   </div>
 </div>
 
-<!-- ── IMPACT (flush to hero) ── -->
-<div class="impact-section">
 
+<!-- ── ABOUT ── -->
+<div class="about-section" id="about">
+  <div class="about-shell">
+    <div class="about-grid">
+      <div class="about-copy">
+        <div class="sec-label">✦ about me</div>
+        <h2 class="sec-title">I like building systems that feel useful, fast, and real.</h2>
+        <p class="about-lede">I'm a <strong>Computer Engineering & Artificial Intelligence</strong> student at the University of Waterloo, focused on SWE, ML, and AI roles. My work sits at the intersection of production software, applied machine learning, and robotics.</p>
+        <p class="about-lede">I've built across startups, space robotics, capital markets, and embedded systems. I care about clean engineering, measurable impact, and products that survive outside of a demo.</p>
+        <div class="about-principle">My default mode is simple: understand the problem deeply, ship the smallest useful version, then make it faster, smarter, and easier to use.</div>
+      </div>
+      <div class="about-card-grid">
+        <div class="about-fact about-fact-wide">
+          <div class="about-fact-label">currently</div>
+          <div class="about-fact-val">AI SWE @ Communitech + robotics research @ UWaterloo</div>
+          <div class="about-mini">Building agentic AI solutions and real-time multi-robot control systems.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">targeting</div>
+          <div class="about-fact-val">SWE, ML, AI, and TPM internships</div>
+          <div class="about-mini">Especially big tech, AI product teams, and infra-heavy engineering groups.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">strengths</div>
+          <div class="about-fact-val">Python, systems, ML, and full-stack product work</div>
+          <div class="about-mini">Comfortable moving from model logic to backend APIs to user-facing demos.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">builder energy</div>
+          <div class="about-fact-val">Robots, hackathon apps, embedded systems, and side quests</div>
+          <div class="about-mini">I like projects where software touches the real world.</div>
+        </div>
+        <div class="about-fact">
+          <div class="about-fact-label">outside code</div>
+          <div class="about-fact-val">Ballet, baking, running, travel, and a Sudoku book</div>
+          <div class="about-mini">A little personality, because there's much more to me than what fits on a resume.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── IMPACT ── -->
+<div class="impact-section">
+  <div class="impact-inner">
+    <div class="impact-top">
+      <div>
+        <div class="sec-label" style="color:var(--peach)">✦ What I bring to the table</div>
+        <div class="impact-title">What I bring to<br/>engineering teams.</div>
+      </div>
+      <div class="impact-sub">A quick scan of the kind of work I want to keep doing: production software, applied AI, real-time systems, and technical ownership.</div>
+    </div>
+    <div class="impact-grid">
+      <div class="imp-card"><span class="imp-num">Ship</span><div class="imp-label">I turn rough ideas into working software with clear interfaces, readable code, and user-facing polish.</div></div>
+      <div class="imp-card"><span class="imp-num">Learn</span><div class="imp-label">I ramp fast across unfamiliar stacks, from ROS 2 and embedded firmware to ML pipelines and cloud tools.</div></div>
+      <div class="imp-card"><span class="imp-num">Own</span><div class="imp-label">I like ambiguous problems where I can define the path, build the system, and improve it with feedback.</div></div>
+      <div class="imp-card"><span class="imp-num">Build</span><div class="imp-label">My favorite work combines software with real-world constraints like latency, reliability, and messy data.</div></div>
+    </div>
+  </div>
 </div>
 
 <!-- ── NEURAL NET ── -->
@@ -551,23 +701,6 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
   </div>
 </div>
 
-<!-- ── ABOUT ── -->
-<div class="section" id="about">
-  <div class="about-grid">
-    <div>
-      <div class="sec-label">✦ about me</div>
-      <h2 class="sec-title">Engineer. Builder.<br/>Hard to put in a box.</h2>
-      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I'm a Computer Engineering & Artificial Intelligence student at the University of Waterloo, and a Schulich Leader Scholar:  1 of 50 in Canada awarded a $120K national STEM scholarship.</p>
-      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I've shipped production software at MDA Space, CIBC Capital Markets, and Omori, and I lead teams as comfortably as I write code. My background spans robotics, quant finance, computer vision, and full-stack dev.</p>
-      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid)">Actively looking for SWE, ML/AI, and TPM roles where I can own hard problems end-to-end.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:0.7rem">
-      <div class="about-fact"><div class="about-fact-label">currently</div><div class="about-fact-val">AI SWE @ Communitech + Robotics Research @ UWaterloo</div></div>
-      <div class="about-fact"><div class="about-fact-label">fun fact</div><div class="about-fact-val"> I love building things, whether that's robots, full-stack apps, or ideas that somehow become real.</div></div>
-      <div class="about-fact"><div class="about-fact-label">education</div><div class="about-fact-val">BASc Computer Engineering & Artificial Intelligence, University of Waterloo</div></div>
-    </div>
-  </div>
-</div>
 
 <!-- ── EXPERIENCE ── -->
 <div style="padding:0 3rem;max-width:1100px;margin:0 auto 2rem" id="experience">
@@ -583,13 +716,13 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     </div>
     <div id="exp-panels">
       <div class="exp-panel active" data-i="0">
-        <div class="exp-header"><div class="exp-role">AI Software Engineer</div><div class="exp-date-badge">May – Aug 2026</div></div>
+        <div class="exp-header"><div class="exp-role">AI Software Engineer</div><div class="exp-date-badge">May - Aug 2026</div></div>
         <div class="exp-company">Communitech · Waterloo, Ontario</div>
         <ul class="exp-bullets"><li>Selected to collaborate with high-growth startups and AltaML to design and deploy AI-powered solutions across real-world business applications.</li></ul>
         <div class="exp-tags"><span class="tag">Python</span><span class="tag">AI/ML</span><span class="tag">Full Stack</span></div>
       </div>
       <div class="exp-panel" data-i="1">
-        <div class="exp-header"><div class="exp-role">Undergraduate Research Assistant</div><div class="exp-date-badge">Jan – Apr 2026</div></div>
+        <div class="exp-header"><div class="exp-role">Undergraduate Research Assistant</div><div class="exp-date-badge">Jan - Apr 2026</div></div>
         <div class="exp-company">ERA Robotics Lab · University of Waterloo</div>
         <ul class="exp-bullets">
           <li>Architecting a sub-100ms real-time human-in-the-loop control stack for multi-robot coordination across 6 RoboMaster platforms via a full ROS 2 pipeline.</li>
@@ -598,7 +731,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
         <div class="exp-tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">ROS 2</span></div>
       </div>
       <div class="exp-panel" data-i="2">
-        <div class="exp-header"><div class="exp-role">Global Markets Quant Intern</div><div class="exp-date-badge">Sep – Dec 2025</div></div>
+        <div class="exp-header"><div class="exp-role">Global Markets Quant Intern</div><div class="exp-date-badge">Sep - Dec 2025</div></div>
         <div class="exp-company">CIBC Capital Markets · Toronto, Ontario</div>
         <ul class="exp-bullets">
           <li>Delivered 15+ quantitative momentum and regime-detection models using Python-based statistical pipelines on Bloomberg time-series data.</li>
@@ -607,7 +740,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
         <div class="exp-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Bloomberg Terminal</span></div>
       </div>
       <div class="exp-panel" data-i="3">
-        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">Jan – Apr 2025</div></div>
+        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">Jan - Apr 2025</div></div>
         <div class="exp-company">MDA Space · Toronto, Ontario</div>
         <ul class="exp-bullets">
           <li>Optimized Canadarm3 fault detection to 90% precision, 84.2% recall, 87.0% F1 via an LSTM + One-Class SVM anomaly detection pipeline.</li>
@@ -616,7 +749,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
         <div class="exp-tags"><span class="tag">Python</span><span class="tag">LSTM</span><span class="tag">SVM</span><span class="tag">AGXUnity</span></div>
       </div>
       <div class="exp-panel" data-i="4">
-        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">May – Aug 2024</div></div>
+        <div class="exp-header"><div class="exp-role">Software Engineering Intern</div><div class="exp-date-badge">May - Aug 2024</div></div>
         <div class="exp-company">Omori North America · Toronto, Ontario</div>
         <ul class="exp-bullets">
           <li>Eliminated 200+ hours/year of operational overhead and cut manual entry errors by 80% by designing and shipping a full-stack machine configuration ordering platform.</li>
@@ -663,11 +796,58 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     </div>
     <a class="proj-card" href="https://github.com/mahijoshii/pixel" target="_blank" rel="noopener noreferrer">
       <div class="proj-icon">🤖</div>
-      <div class="proj-name">Pixel — Autonomous Robot</div>
+      <div class="proj-name">Pixel - Autonomous Robot</div>
       <div class="proj-desc">Differential-drive robot on STM32 Nucleo-F401RE that autonomously navigates using HC-SR04 ultrasonic sensing and PWM-based motor control via L298N driver. Modular embedded C firmware with real-time obstacle avoidance.</div>
       <div class="proj-metric">&lt;100ms real-time control</div><span class="proj-github">⌥ view on github →</span>
       <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">Embedded C</span><span class="tag">STM32</span><span class="tag">PWM</span><span class="tag">Robotics</span></div>
     </a>
+  </div>
+</div>
+
+
+<!-- ── THINGS I LIVE BY ── -->
+<div class="values-section" id="values">
+  <div class="values-shell">
+    <div class="values-header">
+      <div class="sun-wrap">
+        <div class="sun-icon" aria-hidden="true"><div class="sun-face">☀️</div></div>
+        <div>
+          <div class="sec-label">✦ things i live by</div>
+          <div class="values-title">Bright little rules<br/>for life.</div>
+        </div>
+      </div>
+      <p class="values-intro">A few reminders I come back to when I am learning something new, building under pressure, or trying to make an idea real.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div>
+          <div class="value-emoji">🌱</div>
+          <div class="value-text">Your only limit is your mindset.</div>
+        </div>
+        <div class="value-note">growth first</div>
+      </div>
+      <div class="value-card">
+        <div>
+          <div class="value-emoji">☀️</div>
+          <div class="value-text">Be the sunshine you want to see in the world.</div>
+        </div>
+        <div class="value-note">bring good energy</div>
+      </div>
+      <div class="value-card">
+        <div>
+          <div class="value-emoji">⏳</div>
+          <div class="value-text">There is no right time. There is just time, and you choose what to do with it.</div>
+        </div>
+        <div class="value-note">start anyway</div>
+      </div>
+      <div class="value-card">
+        <div>
+          <div class="value-emoji">✨</div>
+          <div class="value-text">Progress over perfection.</div>
+        </div>
+        <div class="value-note">ship and improve</div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -677,7 +857,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <div class="contact-left">
       <div class="sec-label" style="color:var(--peach)">✦ say hello</div>
       <h2 class="sec-title">Let's build<br/>something great.</h2>
-      <p>Actively looking for SWE, ML/AI, and TPM opportunities at ambitious companies. Always happy to chat!</p>
+      <p>Actively looking for SWE, ML, and AI roles at big tech and ambitious engineering teams. Happy to chat about internships, projects, or anything I am building.</p>
     </div>
     <div class="contact-right">
       <a href="mailto:m6joshi@uwaterloo.ca" class="contact-link">
@@ -867,7 +1047,7 @@ function endGame() {
   if (score > best) { best = score; document.getElementById('gb').textContent = best; }
   const ov = document.getElementById('gov');
   ov.querySelector('h3').textContent = score >= 30 ? '🌟 Amazing!' : score >= 15 ? 'Nice flying!' : '💥 Game Over';
-  ov.querySelector('p').textContent = 'You scored ' + score + ' points' + (score === best && score > 0 ? ' — new high score! ✦' : '') + '.';
+  ov.querySelector('p').textContent = 'You scored ' + score + ' points' + (score === best && score > 0 ? ' - new high score! ✦' : '') + '.';
   const sd = document.getElementById('gov-score');
   sd.style.display = 'block'; sd.textContent = 'score: ' + score + ' | best: ' + best;
   ov.querySelector('button').textContent = 'Play again 🚀';
