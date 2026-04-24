@@ -93,16 +93,6 @@ canvas#gc{display:block;width:100%}
 .sec-label{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
 .sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);line-height:1.15;margin-bottom:2rem;color:var(--dark)}
 
-/* ── SKILLS ── */
-.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.skill-group-title{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
-.skill-bar{margin-bottom:1rem}
-.skill-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem}
-.skill-name{font-size:0.88rem;color:var(--dark)}
-.skill-pct{font-size:0.75rem;color:var(--accent);font-weight:500}
-.bar-track{height:4px;background:rgba(201,123,110,0.12);border-radius:100px;overflow:hidden}
-.bar-fill{height:100%;background:linear-gradient(90deg,var(--peach),var(--accent));border-radius:100px;width:0;transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
-
 /* ── EXPERIENCE ── */
 .exp-section{background:var(--softer);border-radius:24px;max-width:1100px;margin:0 auto;padding:3.5rem 3rem}
 .exp-tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid rgba(201,123,110,0.15);overflow-x:auto}
@@ -494,7 +484,6 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
   <a class="nav-logo" href="#">mahi joshi</a>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
     <li><a href="#experience">experience</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#contact">contact</a></li>
@@ -509,7 +498,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <img src="profile.JPG" alt="Mahi Joshi" class="hero-profile"/>
     <h1 class="hero-name">Mahi<br/><em>Joshi.</em></h1>
   </div>
-    <p class="hero-sub">Computer Engineering + AI at U of Waterloo. I build things that are fast, smart, and actually shipped — from Agentic AI, full stack apps, to ML for the International Space Station Canadarm in 24 hours.</p>
+    <p class="hero-sub">Computer Engineering & Artificial Intelligence at University of Waterloo. I build things that are fast and smart. From Agentic AI at startups, to Machine Learning for the International Space Station.</p>
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">internships</div></div>
       <div class="hstat"><div class="hstat-num">$120K</div><div class="hstat-label">Schulich Scholar</div></div>
@@ -565,7 +554,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
         <div class="nn-title">A network that<br/>thinks with you.</div>
       </div>
       <div class="nn-desc">
-        Move your cursor across the canvas to <strong>fire neurons</strong> and watch activations ripple through the layers — input → hidden → output.<br/><br/>
+        Move your cursor across the canvas to <strong>fire neurons</strong> and watch activations ripple through the layers: input → hidden → output.<br/><br/>
         This is what I build: systems that process, learn, and respond. The brighter the node, the stronger the activation signal. Output nodes light up with what I can do for your team.
       </div>
     </div>
@@ -580,39 +569,14 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <div>
       <div class="sec-label">✦ about me</div>
       <h2 class="sec-title">Engineer. Builder.<br/>Hard to put in a box.</h2>
-      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I'm a Computer Engineering + AI student at the University of Waterloo, and a Schulich Leader Scholar — 1 of 50 in Canada awarded a $120K national STEM scholarship.</p>
+      <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I'm a Computer Engineering & Artificial Intelligence student at the University of Waterloo, and a Schulich Leader Scholar:  1 of 50 in Canada awarded a $120K national STEM scholarship.</p>
       <p style="font-size:0.93rem;line-height:1.85;color:var(--mid);margin-bottom:0.9rem">I've shipped production software at MDA Space, CIBC Capital Markets, and Omori, and I lead teams as comfortably as I write code. My background spans robotics, quant finance, computer vision, and full-stack dev.</p>
       <p style="font-size:0.93rem;line-height:1.85;color:var(--mid)">Actively looking for SWE, ML/AI, and TPM roles where I can own hard problems end-to-end.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:0.7rem">
       <div class="about-fact"><div class="about-fact-label">currently</div><div class="about-fact-val">AI SWE @ Communitech + Robotics Research @ UWaterloo</div></div>
-      <div class="about-fact"><div class="about-fact-label">scholarship</div><div class="about-fact-val">Schulich Leader — 1 of 50 in Canada 🎓</div></div>
-      <div class="about-fact"><div class="about-fact-label">fun fact</div><div class="about-fact-val">Led 15 engineers to ship a full electric skateboard from scratch</div></div>
-      <div class="about-fact"><div class="about-fact-label">education</div><div class="about-fact-val">BASc Computer Engineering + AI, University of Waterloo</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ── SKILLS ── -->
-<div class="section" id="skills" style="padding-top:0">
-  <div class="sec-label">✦ skills</div>
-  <h2 class="sec-title">What I bring<br/>to the table.</h2>
-  <div class="skills-grid">
-    <div>
-      <div class="skill-group-title">languages</div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">95%</span></div><div class="bar-track"><div class="bar-fill" data-w="95"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">C / C++</span><span class="skill-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">TypeScript / JS</span><span class="skill-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">SQL / R</span><span class="skill-pct">75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Go / Java</span><span class="skill-pct">65%</span></div><div class="bar-track"><div class="bar-fill" data-w="65"></div></div></div>
-    </div>
-    <div>
-      <div class="skill-group-title">frameworks & tools</div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">PyTorch / TensorFlow</span><span class="skill-pct">90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">ROS 2 / Robotics</span><span class="skill-pct">85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">React / React Native</span><span class="skill-pct">80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Docker / Kubernetes</span><span class="skill-pct">75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
-      <div class="skill-bar"><div class="skill-row"><span class="skill-name">Bloomberg / Quant</span><span class="skill-pct">70%</span></div><div class="bar-track"><div class="bar-fill" data-w="70"></div></div></div>
+      <div class="about-fact"><div class="about-fact-label">fun fact</div><div class="about-fact-val"> I love building things, whether that's robots, full-stack apps, or ideas that somehow become real.</div></div>
+      <div class="about-fact"><div class="about-fact-label">education</div><div class="about-fact-val">BASc Computer Engineering & Artificial Intelligence, University of Waterloo</div></div>
     </div>
   </div>
 </div>
@@ -705,7 +669,7 @@ footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:rgba(122,85,72,0
     <div class="proj-card">
       <div class="proj-icon">🦾</div>
       <div class="proj-name">Multi-Robot Teleoperation</div>
-      <div class="proj-desc">Full ROS 2 pipeline for human-in-the-loop teleoperation across 5 RoboMaster robots via SenseGlove wearable. Sub-100ms latency. Ongoing research under faculty supervision at UWaterloo.</div>
+      <div class="proj-desc">Full Python & ROS 2 pipeline for human-in-the-loop teleoperation across 5 RoboMaster robots via SenseGlove wearable. Sub-100ms latency. Ongoing research under faculty supervision at UWaterloo.</div>
       <div class="proj-metric">&lt;100ms control latency</div>
       <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">C++</span></div>
     </div>
