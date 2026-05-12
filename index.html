@@ -155,7 +155,7 @@
         <div class="sec-label">✦ experience</div>
         <h2 class="sec-title">Where I've built<br/>real systems.</h2>
       </div>
-      <p class="exp-intro">A timeline of roles where I have built across AI, digital health, robotics, markets, space systems, and production software.</p>
+      <p class="exp-intro">A timeline of roles and builder experiences where I have built across AI, digital health, robotics, markets, space systems, embedded firmware, and product development.</p>
     </div>
 
     <div class="exp-layout">
@@ -165,6 +165,8 @@
         <div class="exp-tab" data-i="2">CIBC</div>
         <div class="exp-tab" data-i="3">MDA Space</div>
         <div class="exp-tab" data-i="4">Omori</div>
+        <div class="exp-tab" data-i="5">Electrium</div>
+        <div class="exp-tab" data-i="6">Hack the North</div>
       </div>
 
       <div class="exp-panels-shell" id="exp-panels">
@@ -244,6 +246,40 @@
             <div class="exp-tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span><span class="tag">Full Stack</span></div>
           </div>
         </div>
+
+        <div class="exp-panel" data-i="5">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">Electric Skateboard Project Lead</div><div class="exp-date-badge">Sep - Dec 2024</div></div>
+            <div class="exp-company">Electrium Mobility Design Team · University of Waterloo</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Electric mobility, embedded feedback systems, and cross-functional hardware integration</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Technical leadership across mechanical, electrical, and firmware teams</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led a 15-person engineering team building an electric skateboard from concept through testing, coordinating mechanical design, electrical systems, firmware, validation, and performance tradeoffs.</li>
+              <li>Engineered STM32-based real-time LED feedback that reacted to acceleration and braking signals, turning vehicle state into intuitive lighting cues for rider interaction and safety.</li>
+              <li>Managed design reviews, integration milestones, and benchmark testing to keep subsystem owners aligned as the board moved from prototype decisions to validated performance goals.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">STM32</span><span class="tag">Embedded C/C++</span><span class="tag">Firmware</span><span class="tag">Product Leadership</span><span class="tag">Hardware Integration</span></div>
+          </div>
+        </div>
+
+        <div class="exp-panel" data-i="6">
+          <div class="exp-card-main">
+            <div class="exp-header"><div class="exp-role">NeuroGuard Builder</div><div class="exp-date-badge">Sep 2024</div></div>
+            <div class="exp-company">Hack the North · Waterloo, Ontario</div>
+            <div class="exp-snapshot">
+              <div class="exp-snap"><div class="exp-snap-label">focus</div><div class="exp-snap-val">Computer vision fall detection for Alzheimer’s patient safety</div></div>
+              <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Rapid ML prototype with real-time alerts, video monitoring, and caregiver data access</div></div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Built a real-time fall detection application for Alzheimer’s patients that reached 96.88% accuracy and notified healthcare providers when high-risk events were detected.</li>
+              <li>Implemented OpenCV, MediaPipe pose estimation, and unsupervised ML logic in Python to classify fall events from video streams and connect detections into a React-based monitoring interface.</li>
+              <li>Created a fall history tracker that automatically logged incident time, date, and duration, giving caregivers a clearer view of patient safety patterns over time.</li>
+            </ul>
+            <div class="exp-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Unsupervised ML</span><span class="tag">React</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -278,9 +314,9 @@
     <div class="proj-card" style="cursor:default">
       <div class="proj-icon">⚡</div>
       <div class="proj-name">Electric Skateboard</div>
-      <div class="proj-desc">Led a 15-member cross-functional team across mechanical, electrical, and firmware from design through system validation. C++ firmware on STM32 with &lt;50ms real-time LED response on 20+ test runs.</div>
-      <div class="proj-metric">&lt;50ms firmware response</div>
-      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">C++</span><span class="tag">STM32</span><span class="tag">SolidWorks</span></div>
+      <div class="proj-desc">Project-led Electrium Mobility’s electric skateboard build with a 15-person cross-functional team, coordinating mechanical, electrical, and firmware integration from concept through testing. Built STM32 real-time LED feedback that responded to acceleration and braking, improving rider interaction and safety signals.</div>
+      <div class="proj-metric">15 engineers led · real-time STM32 feedback</div>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">STM32</span><span class="tag">Embedded C/C++</span><span class="tag">Firmware</span><span class="tag">Product Leadership</span></div>
     </div>
     <div class="proj-card">
       <div class="proj-icon">🦾</div>
@@ -292,9 +328,9 @@
     <a class="proj-card" href="https://github.com/rishaband/NeuroGuard" target="_blank" rel="noopener noreferrer">
       <div class="proj-icon">🧠</div>
       <div class="proj-name">NeuroGuard</div>
-      <div class="proj-desc">Real-time fall detection for at-risk patients using OpenCV + MediaPipe pose estimation + unsupervised ML. End-to-end Python event pipeline with React dashboard and live clinician alerts. Built at Hack the North.</div>
-      <div class="proj-metric">96.9% detection accuracy</div><span class="proj-github">⌥ view on github →</span>
-      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">React Native</span></div>
+      <div class="proj-desc">Real-time fall detection system for Alzheimer’s patient safety, combining OpenCV, MediaPipe pose estimation, and unsupervised ML to detect fall events from video. Included live provider alerts, video monitoring, and automatic fall history logs with incident time, date, and duration.</div>
+      <div class="proj-metric">96.88% detection accuracy</div><span class="proj-github">⌥ view on github →</span>
+      <div class="exp-tags" style="margin-top:0.6rem"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">React</span></div>
     </a>
     
   </div>
