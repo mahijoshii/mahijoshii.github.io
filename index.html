@@ -224,8 +224,11 @@
               <div class="exp-snap"><div class="exp-snap-label">style</div><div class="exp-snap-val">Simulation data, anomaly detection, and model robustness</div></div>
             </div>
             <ul class="exp-bullets">
-              <li>Optimized Canadarm3 fault detection to 90% precision, 84.2% recall, 87.0% F1 via an LSTM + One-Class SVM anomaly detection pipeline.</li>
-              <li>Automated ~1,200 AGXUnity simulation datasets/day for training data, reducing overfitting under real-world failure conditions.</li>
+              <li>Improved Canadarm3 anomaly detection to 90% precision, 84.2% recall, and 87.0% F1 by engineering Python ML pipelines for friction-induced wear prediction on simulated telemetry.</li>
+<li>Detected early mechanical degradation by training One-Class SVM models on sensor streams, converting raw telematics into predictive maintenance signals for space robotics components.</li>
+<li>Enabled real-time diagnostics by building preprocessing pipelines for telemetry data, transforming noisy simulation outputs into model-ready features for proactive maintenance analysis.</li>
+<li>Reduced debugging cycles by adding end-to-end logging across data ingestion, training, inference, and deployment, surfacing key errors and model values earlier for faster tuning.</li>
+<li>Evaluated VELC and AER autoencoder research for time-series anomaly detection, comparing TensorFlow and PyTorch deep learning approaches against SVM-based baselines for Canadarm3 prediction.</li>
             </ul>
             <div class="exp-tags"><span class="tag">Python</span><span class="tag">LSTM</span><span class="tag">SVM</span><span class="tag">AGXUnity</span></div>
           </div>
